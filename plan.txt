@@ -1,0 +1,12 @@
+1. C1 -> C2 #first level
+2. C2 -> C3 # second level
+
+User Course : purchase_type
+case 1
+if refferal code is not used purchase_type =0
+assign_refferal= level1 ->40%
+
+Case 2
+refered type 1:
+purchase_type=1 coupon_code: 
+coupon_code,reffepered_type : 1

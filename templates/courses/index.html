@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Courses Page</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Courses Page</h2>
+
+        <h5>Wallet Balance = Rs.{{ profile.wallet }}</h5>
+        <h5>Company Bank = Rs.{{ CBank }}</h5>
+
+
+        {% for course in courses %}
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ course.title }}</h5>
+                    <p class="card-text">{{ course.description }}</p>
+                    <a href="{% url 'buy_course' course.id %}" class="btn btn-danger">Buy Course Rs.{{ course.price }}</a>
+
+                    {% for profile in course.get_course_purchased_list %}
+                        {% if profile == request.user %}
+                            <a href="{% url 'referral_home' course.id %}" class="btn btn-info">Share Course</a>
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
